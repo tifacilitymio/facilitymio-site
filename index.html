@@ -5,62 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FacilityMIO — Em Construção</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@62.5..100,100..900&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    :root {
+      --preto: #212721;
+      --dourado: #9D7C2F;
+      --dourado-claro: #CA9B38;
+      --dourado-claro2: #E5D7B0;
+      --verde: #00664F;
+      --vinho: #6F263D;
+    }
+
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Noto Sans', -apple-system, sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0b0d15;
+      background: var(--preto);
       overflow: hidden;
       position: relative;
     }
 
-    /* ── animated background ── */
     .bg-grid {
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255, 185, 15, .04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 185, 15, .04) 1px, transparent 1px);
-      background-size: 60px 60px;
+        linear-gradient(rgba(157, 124, 47, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(157, 124, 47, .04) 1px, transparent 1px);
+      background-size: 70px 70px;
       z-index: 0;
-      animation: gridPulse 4s ease-in-out infinite alternate;
+      animation: gridPulse 5s ease-in-out infinite alternate;
     }
     @keyframes gridPulse {
-      0%   { opacity: .4; }
-      100% { opacity: 1; }
+      0%   { opacity: .2; }
+      100% { opacity: .7; }
     }
 
     .bg-glow {
       position: fixed;
-      width: 700px;
-      height: 700px;
+      width: 650px;
+      height: 650px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 185, 15, .08) 0%, transparent 70%);
-      top: -200px;
+      background: radial-gradient(circle, rgba(157, 124, 47, .07) 0%, transparent 70%);
+      top: -250px;
       right: -200px;
       z-index: 0;
-      animation: glowDrift 12s ease-in-out infinite alternate;
+      animation: glowDrift 14s ease-in-out infinite alternate;
     }
     .bg-glow-2 {
       left: -300px;
       bottom: -300px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255, 100, 50, .06) 0%, transparent 70%);
-      animation-delay: -6s;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(0, 102, 79, .06) 0%, transparent 70%);
+      animation-delay: -7s;
     }
     @keyframes glowDrift {
       0%   { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(80px, 60px) scale(1.25); }
+      100% { transform: translate(70px, 50px) scale(1.2); }
     }
 
-    /* ── floating construction icons ── */
     .floating-icons {
       position: fixed;
       inset: 0;
@@ -70,221 +78,218 @@
     }
     .floating-icons span {
       position: absolute;
-      font-size: 2rem;
-      opacity: .12;
-      animation: floatIcon 18s linear infinite;
+      opacity: 0;
+      animation: floatUp 20s linear infinite;
     }
-    .floating-icons span:nth-child(1) { left: 5%;  top: -5%;  animation-duration: 22s; animation-delay: 0s;   font-size: 2.4rem; }
-    .floating-icons span:nth-child(2) { left: 20%; top: -5%;  animation-duration: 26s; animation-delay: -3s;  font-size: 1.8rem; }
-    .floating-icons span:nth-child(3) { left: 40%; top: -5%;  animation-duration: 20s; animation-delay: -7s;  font-size: 2.6rem; }
-    .floating-icons span:nth-child(4) { left: 55%; top: -5%;  animation-duration: 28s; animation-delay: -2s;  font-size: 1.6rem; }
-    .floating-icons span:nth-child(5) { left: 70%; top: -5%;  animation-duration: 24s; animation-delay: -11s; font-size: 2.2rem; }
-    .floating-icons span:nth-child(6) { left: 85%; top: -5%;  animation-duration: 30s; animation-delay: -5s;  font-size: 1.9rem; }
-    .floating-icons span:nth-child(7) { left: 10%; top: -5%;  animation-duration: 19s; animation-delay: -9s;  font-size: 2rem;   }
-    .floating-icons span:nth-child(8) { left: 93%; top: -5%;  animation-duration: 27s; animation-delay: -15s; font-size: 2.3rem; }
+    .floating-icons .m-shape {
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(157, 124, 47, .1);
+      font-family: 'Noto Sans', sans-serif;
+    }
+    .floating-icons .m-shape:nth-child(1) { left: 8%;  animation-duration: 24s; animation-delay: 0s;   font-size: 3.5rem; }
+    .floating-icons .m-shape:nth-child(2) { left: 25%; animation-duration: 28s; animation-delay: -4s;  font-size: 2.5rem; }
+    .floating-icons .m-shape:nth-child(3) { left: 42%; animation-duration: 22s; animation-delay: -8s;  font-size: 3rem;   }
+    .floating-icons .m-shape:nth-child(4) { left: 58%; animation-duration: 26s; animation-delay: -3s;  font-size: 2rem;   }
+    .floating-icons .m-shape:nth-child(5) { left: 75%; animation-duration: 30s; animation-delay: -12s; font-size: 2.8rem; }
+    .floating-icons .m-shape:nth-child(6) { left: 90%; animation-duration: 20s; animation-delay: -6s;  font-size: 2.2rem; }
+    .floating-icons .m-shape:nth-child(7) { left: 15%; animation-duration: 32s; animation-delay: -16s; font-size: 1.8rem; }
+    .floating-icons .m-shape:nth-child(8) { left: 65%; animation-duration: 25s; animation-delay: -10s; font-size: 2.6rem; }
 
-    @keyframes floatIcon {
+    @keyframes floatUp {
       0%   { transform: translateY(0) rotate(0deg);   opacity: 0; }
-      5%   { opacity: .12; }
-      90%  { opacity: .10; }
+      5%   { opacity: .08; }
+      90%  { opacity: .06; }
       100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
 
-    /* ── main card ── */
     .card {
       position: relative;
       z-index: 1;
       text-align: center;
       padding: 3rem 2.5rem;
-      max-width: 600px;
+      max-width: 620px;
       width: 90%;
     }
 
-    /* ── construction logo / icon ── */
-    .icon-wrapper {
+    .logo-m {
       position: relative;
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 2rem;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 1.75rem;
     }
-    .icon-ring {
+    .logo-m svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .logo-ring {
       position: absolute;
-      inset: 0;
+      inset: -8px;
       border-radius: 50%;
-      border: 2px solid rgba(255, 185, 15, .2);
-      animation: ringSpin 8s linear infinite;
+      border: 1.5px solid rgba(157, 124, 47, .15);
+      animation: ringSpin 10s linear infinite;
     }
-    .icon-ring:nth-child(2) {
-      inset: -12px;
+    .logo-ring:nth-child(3) {
+      inset: -18px;
       border-style: dashed;
-      animation-duration: 12s;
+      animation-duration: 16s;
       animation-direction: reverse;
-      border-color: rgba(255, 185, 15, .12);
+      border-color: rgba(157, 124, 47, .08);
     }
     @keyframes ringSpin {
       to { transform: rotate(360deg); }
     }
-    .icon-emoji {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      animation: iconBounce 2s ease-in-out infinite;
-    }
-    @keyframes iconBounce {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50%      { transform: translateY(-10px) scale(1.06); }
-    }
 
-    /* ── status badge ── */
     .status {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
       padding: .35rem 1rem;
       border-radius: 100px;
-      background: rgba(255, 185, 15, .1);
-      border: 1px solid rgba(255, 185, 15, .2);
-      font-size: .8rem;
+      background: rgba(157, 124, 47, .08);
+      border: 1px solid rgba(157, 124, 47, .15);
+      font-size: .75rem;
       font-weight: 600;
-      color: #ffb90f;
-      letter-spacing: .04em;
+      color: var(--dourado);
+      letter-spacing: .08em;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
     .status-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: #ffb90f;
-      animation: dotPulse 1.4s ease-in-out infinite;
+      background: var(--dourado);
+      animation: dotPulse 1.5s ease-in-out infinite;
     }
     @keyframes dotPulse {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: .35; transform: scale(.6); }
+      50%      { opacity: .3; transform: scale(.5); }
     }
 
-    /* ── heading ── */
     h1 {
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 900;
-      line-height: 1.1;
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.15;
       color: #fff;
-      margin-bottom: .5rem;
-      letter-spacing: -.02em;
+      margin-bottom: .75rem;
+      letter-spacing: -.015em;
     }
-    h1 .highlight {
-      background: linear-gradient(135deg, #ffb90f, #ff8c42);
+    h1 .brand {
+      background: linear-gradient(135deg, var(--dourado), var(--dourado-claro), var(--dourado-claro2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    /* ── typewriter subtitle ── */
-    .subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: rgba(255,255,255,.55);
-      font-weight: 400;
-      margin-bottom: 2.5rem;
-      min-height: 1.6em;
-    }
-    .subtitle span {
-      display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 2px solid #ffb90f;
-      animation: typing 3s steps(30) 1s forwards, blink .8s step-end infinite;
-      max-width: 0;
-      animation-fill-mode: forwards;
-    }
-    @keyframes typing {
-      to { max-width: 30em; }
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
+    .essence {
+      font-size: .8rem;
+      color: rgba(157, 124, 47, .4);
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
     }
 
-    /* ── progress bar ── */
+    .subtitle {
+      font-size: clamp(.95rem, 1.8vw, 1.1rem);
+      color: rgba(255,255,255,.5);
+      font-weight: 400;
+      margin-bottom: .75rem;
+      line-height: 1.6;
+    }
+
+    .mission {
+      font-size: .85rem;
+      color: rgba(255,255,255,.3);
+      font-weight: 400;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
     .progress-wrap {
       width: 100%;
-      height: 4px;
-      border-radius: 4px;
-      background: rgba(255,255,255,.08);
-      margin-bottom: 1rem;
+      max-width: 360px;
+      height: 3px;
+      border-radius: 3px;
+      background: rgba(255,255,255,.06);
+      margin: 0 auto 1rem;
       overflow: hidden;
     }
     .progress-bar {
       height: 100%;
       width: 0;
-      border-radius: 4px;
-      background: linear-gradient(90deg, #ffb90f, #ff8c42);
-      animation: progressFill 4s ease-in-out 1.5s infinite alternate;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--dourado), var(--dourado-claro));
+      animation: progressFill 4.5s ease-in-out 1.8s infinite alternate;
     }
     @keyframes progressFill {
       0%   { width: 0; }
-      50%  { width: 78%; }
-      100% { width: 45%; }
+      50%  { width: 72%; }
+      100% { width: 38%; }
     }
-
     .progress-label {
-      font-size: .8rem;
-      color: rgba(255,255,255,.35);
-      letter-spacing: .06em;
+      font-size: .75rem;
+      color: rgba(255,255,255,.25);
+      letter-spacing: .08em;
       margin-bottom: 2.5rem;
     }
     .progress-label span {
-      color: rgba(255,255,255,.6);
+      color: var(--dourado);
+      font-weight: 600;
     }
 
-    /* ── contact / social ── */
     .contact {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.25rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
     .contact a {
       display: inline-flex;
       align-items: center;
       gap: .4rem;
-      padding: .6rem 1.2rem;
-      border-radius: 10px;
-      background: rgba(255,255,255,.04);
+      padding: .55rem 1.1rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,.03);
       border: 1px solid rgba(255,255,255,.06);
-      color: rgba(255,255,255,.6);
+      color: rgba(255,255,255,.5);
       text-decoration: none;
-      font-size: .85rem;
+      font-size: .82rem;
       font-weight: 500;
-      transition: all .3s ease;
+      transition: all .35s ease;
     }
     .contact a:hover {
-      background: rgba(255,185,15,.08);
-      border-color: rgba(255,185,15,.25);
-      color: #ffb90f;
+      background: rgba(157, 124, 47, .08);
+      border-color: rgba(157, 124, 47, .2);
+      color: var(--dourado);
       transform: translateY(-2px);
     }
     .contact a svg {
-      width: 18px;
-      height: 18px;
+      width: 17px;
+      height: 17px;
       fill: currentColor;
     }
 
-    /* ── footer ── */
     .footer {
-      margin-top: 3rem;
-      font-size: .75rem;
-      color: rgba(255,255,255,.2);
-      letter-spacing: .04em;
+      margin-top: 2.5rem;
+      font-size: .7rem;
+      color: rgba(255,255,255,.12);
+      letter-spacing: .06em;
     }
 
-    /* ── responsive ── */
     @media (max-width: 480px) {
-      .card { padding: 2rem 1.5rem; }
-      .icon-wrapper { width: 90px; height: 90px; }
-      .icon-emoji { font-size: 3rem; }
+      .card { padding: 2rem 1.25rem; }
+      .logo-m { width: 85px; height: 85px; }
+      h1 { font-size: 1.8rem; }
+      .mission { font-size: .8rem; }
+    }
+
+    @media (min-width: 768px) {
+      .card { padding: 4rem 3rem; }
     }
   </style>
 </head>
@@ -295,21 +300,31 @@
   <div class="bg-glow bg-glow-2"></div>
 
   <div class="floating-icons">
-    <span>🪚</span>
-    <span>🔧</span>
-    <span>🏗️</span>
-    <span>🛠️</span>
-    <span>📐</span>
-    <span>⚙️</span>
-    <span>🔨</span>
-    <span>🧱</span>
+    <span class="m-shape">M</span>
+    <span class="m-shape">M</span>
+    <span class="m-shape">M</span>
+    <span class="m-shape">M</span>
+    <span class="m-shape">M</span>
+    <span class="m-shape">M</span>
+    <span class="m-shape">M</span>
+    <span class="m-shape">M</span>
   </div>
 
   <main class="card">
-    <div class="icon-wrapper">
-      <div class="icon-ring"></div>
-      <div class="icon-ring"></div>
-      <div class="icon-emoji">🏗️</div>
+    <div class="logo-m">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#9D7C2F"/>
+            <stop offset="50%" stop-color="#CA9B38"/>
+            <stop offset="100%" stop-color="#E5D7B0"/>
+          </linearGradient>
+        </defs>
+        <polygon points="10,80 30,20 50,55 70,20 90,80 75,80 60,45 50,65 40,45 25,80" fill="url(#goldGrad)" opacity=".9"/>
+        <polygon points="30,65 50,40 70,65 65,72 50,55 35,72" fill="url(#goldGrad)" opacity=".45"/>
+      </svg>
+      <div class="logo-ring"></div>
+      <div class="logo-ring"></div>
     </div>
 
     <div class="status">
@@ -318,18 +333,25 @@
     </div>
 
     <h1>
-      <span class="highlight">Facility</span>MIO
+      <span class="brand">Facility</span>MIO
     </h1>
 
+    <p class="essence">Mais que uma letra. Um movimento.</p>
+
     <p class="subtitle">
-      <span>Em breve estaremos no ar</span>
+      Estamos preparando algo sólido, claro e estratégico para você.
+    </p>
+
+    <p class="mission">
+      Existimos para facilitar o caminho de quem quer vender para o governo<br class="hide-mobile" />
+      com estratégia, segurança e visão de longo prazo.
     </p>
 
     <div class="progress-wrap">
       <div class="progress-bar"></div>
     </div>
     <p class="progress-label">
-      construindo o futuro · <span>00%</span>
+      construindo com clareza · <span>00%</span>
     </p>
 
     <div class="contact">
@@ -344,14 +366,11 @@
 
   <script>
     const label = document.querySelector('.progress-label span');
-    let p = 0;
     setInterval(() => {
       const bar = document.querySelector('.progress-bar');
       const w = parseFloat(getComputedStyle(bar).width);
       const total = parseFloat(getComputedStyle(bar.parentElement).width);
-      if (total > 0) {
-        label.textContent = Math.round((w / total) * 100) + '%';
-      }
+      if (total > 0) label.textContent = Math.round((w / total) * 100) + '%';
     }, 200);
   </script>
 
