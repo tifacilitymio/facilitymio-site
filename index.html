@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FacilityMIO — Em Construção</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0b0d15;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── animated background ── */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 185, 15, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 185, 15, .04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+      animation: gridPulse 4s ease-in-out infinite alternate;
+    }
+    @keyframes gridPulse {
+      0%   { opacity: .4; }
+      100% { opacity: 1; }
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 185, 15, .08) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      z-index: 0;
+      animation: glowDrift 12s ease-in-out infinite alternate;
+    }
+    .bg-glow-2 {
+      left: -300px;
+      bottom: -300px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 100, 50, .06) 0%, transparent 70%);
+      animation-delay: -6s;
+    }
+    @keyframes glowDrift {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(80px, 60px) scale(1.25); }
+    }
+
+    /* ── floating construction icons ── */
+    .floating-icons {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .floating-icons span {
+      position: absolute;
+      font-size: 2rem;
+      opacity: .12;
+      animation: floatIcon 18s linear infinite;
+    }
+    .floating-icons span:nth-child(1) { left: 5%;  top: -5%;  animation-duration: 22s; animation-delay: 0s;   font-size: 2.4rem; }
+    .floating-icons span:nth-child(2) { left: 20%; top: -5%;  animation-duration: 26s; animation-delay: -3s;  font-size: 1.8rem; }
+    .floating-icons span:nth-child(3) { left: 40%; top: -5%;  animation-duration: 20s; animation-delay: -7s;  font-size: 2.6rem; }
+    .floating-icons span:nth-child(4) { left: 55%; top: -5%;  animation-duration: 28s; animation-delay: -2s;  font-size: 1.6rem; }
+    .floating-icons span:nth-child(5) { left: 70%; top: -5%;  animation-duration: 24s; animation-delay: -11s; font-size: 2.2rem; }
+    .floating-icons span:nth-child(6) { left: 85%; top: -5%;  animation-duration: 30s; animation-delay: -5s;  font-size: 1.9rem; }
+    .floating-icons span:nth-child(7) { left: 10%; top: -5%;  animation-duration: 19s; animation-delay: -9s;  font-size: 2rem;   }
+    .floating-icons span:nth-child(8) { left: 93%; top: -5%;  animation-duration: 27s; animation-delay: -15s; font-size: 2.3rem; }
+
+    @keyframes floatIcon {
+      0%   { transform: translateY(0) rotate(0deg);   opacity: 0; }
+      5%   { opacity: .12; }
+      90%  { opacity: .10; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ── main card ── */
+    .card {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 2.5rem;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    /* ── construction logo / icon ── */
+    .icon-wrapper {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+    }
+    .icon-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 185, 15, .2);
+      animation: ringSpin 8s linear infinite;
+    }
+    .icon-ring:nth-child(2) {
+      inset: -12px;
+      border-style: dashed;
+      animation-duration: 12s;
+      animation-direction: reverse;
+      border-color: rgba(255, 185, 15, .12);
+    }
+    @keyframes ringSpin {
+      to { transform: rotate(360deg); }
+    }
+    .icon-emoji {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-10px) scale(1.06); }
+    }
+
+    /* ── status badge ── */
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem 1rem;
+      border-radius: 100px;
+      background: rgba(255, 185, 15, .1);
+      border: 1px solid rgba(255, 185, 15, .2);
+      font-size: .8rem;
+      font-weight: 600;
+      color: #ffb90f;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffb90f;
+      animation: dotPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .35; transform: scale(.6); }
+    }
+
+    /* ── heading ── */
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: .5rem;
+      letter-spacing: -.02em;
+    }
+    h1 .highlight {
+      background: linear-gradient(135deg, #ffb90f, #ff8c42);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── typewriter subtitle ── */
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.55);
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+      min-height: 1.6em;
+    }
+    .subtitle span {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #ffb90f;
+      animation: typing 3s steps(30) 1s forwards, blink .8s step-end infinite;
+      max-width: 0;
+      animation-fill-mode: forwards;
+    }
+    @keyframes typing {
+      to { max-width: 30em; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* ── progress bar ── */
+    .progress-wrap {
+      width: 100%;
+      height: 4px;
+      border-radius: 4px;
+      background: rgba(255,255,255,.08);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #ffb90f, #ff8c42);
+      animation: progressFill 4s ease-in-out 1.5s infinite alternate;
+    }
+    @keyframes progressFill {
+      0%   { width: 0; }
+      50%  { width: 78%; }
+      100% { width: 45%; }
+    }
+
+    .progress-label {
+      font-size: .8rem;
+      color: rgba(255,255,255,.35);
+      letter-spacing: .06em;
+      margin-bottom: 2.5rem;
+    }
+    .progress-label span {
+      color: rgba(255,255,255,.6);
+    }
+
+    /* ── contact / social ── */
+    .contact {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .6rem 1.2rem;
+      border-radius: 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      transition: all .3s ease;
+    }
+    .contact a:hover {
+      background: rgba(255,185,15,.08);
+      border-color: rgba(255,185,15,.25);
+      color: #ffb90f;
+      transform: translateY(-2px);
+    }
+    .contact a svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ── footer ── */
+    .footer {
+      margin-top: 3rem;
+      font-size: .75rem;
+      color: rgba(255,255,255,.2);
+      letter-spacing: .04em;
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 480px) {
+      .card { padding: 2rem 1.5rem; }
+      .icon-wrapper { width: 90px; height: 90px; }
+      .icon-emoji { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <div class="floating-icons">
+    <span>🪚</span>
+    <span>🔧</span>
+    <span>🏗️</span>
+    <span>🛠️</span>
+    <span>📐</span>
+    <span>⚙️</span>
+    <span>🔨</span>
+    <span>🧱</span>
+  </div>
+
+  <main class="card">
+    <div class="icon-wrapper">
+      <div class="icon-ring"></div>
+      <div class="icon-ring"></div>
+      <div class="icon-emoji">🏗️</div>
+    </div>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      Em construção
+    </div>
+
+    <h1>
+      <span class="highlight">Facility</span>MIO
+    </h1>
+
+    <p class="subtitle">
+      <span>Em breve estaremos no ar</span>
+    </p>
+
+    <div class="progress-wrap">
+      <div class="progress-bar"></div>
+    </div>
+    <p class="progress-label">
+      construindo o futuro · <span>00%</span>
+    </p>
+
+    <div class="contact">
+      <a href="mailto:contato@facilitymio.com.br">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        contato@facilitymio.com.br
+      </a>
+    </div>
+
+    <p class="footer">&copy; 2025 FacilityMIO — Todos os direitos reservados</p>
+  </main>
+
+  <script>
+    const label = document.querySelector('.progress-label span');
+    let p = 0;
+    setInterval(() => {
+      const bar = document.querySelector('.progress-bar');
+      const w = parseFloat(getComputedStyle(bar).width);
+      const total = parseFloat(getComputedStyle(bar.parentElement).width);
+      if (total > 0) {
+        label.textContent = Math.round((w / total) * 100) + '%';
+      }
+    }, 200);
+  </script>
+
+</body>
+</html>
